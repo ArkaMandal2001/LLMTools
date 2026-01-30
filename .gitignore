@@ -1,0 +1,6 @@
+backend/.env
+backend/venv/
+frontend/node_modules/
+**/__pycache__/
+backend/app/client_secrets.json
+frontend/.next/

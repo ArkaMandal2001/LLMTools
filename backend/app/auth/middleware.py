@@ -13,3 +13,7 @@ async def require_auth(request: Request):
         raise HTTPException(status_code=401, detail="Invalid token")
 
     request.state.user_id = user_id
+
+def get_user_id_from_token(token: str) -> str:
+    """Extract user_id from token for WebSocket connections"""
+    return verify_session_token(token)

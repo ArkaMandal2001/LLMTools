@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import SignIn from "@/components/SignIn";
-import Chat from "@/components/Chat";
+import ChatRealtime from "@/components/ChatRealtime";
 
 export default function Home() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -43,7 +43,7 @@ export default function Home() {
   }
 
   return isLoggedIn ? (
-    <Chat onLogout={handleLogout} />
+    <ChatRealtime onLogout={handleLogout} />
   ) : (
     <SignIn onSignInSuccess={() => setIsLoggedIn(true)} />
   );

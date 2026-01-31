@@ -16,7 +16,7 @@ class Settings:
 
     JWT_SECRET = os.getenv("JWT_SECRET", "dev-secret").strip()
     JWT_ALGO = "HS256"
-    
+
     # Firebase credentials
     FIREBASE_PROJECT_ID = os.getenv("FIREBASE_PROJECT_ID", "").strip()
     FIREBASE_PRIVATE_KEY_ID = os.getenv("FIREBASE_PRIVATE_KEY_ID", "").strip()

@@ -1,5 +1,5 @@
 // Backend API endpoints
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "https://oolsackend-arkatigps9522-1ju1urxk.leapcell.dev";
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "https://llmtoolsbackend-production.up.railway.app";
 
 export const API_ENDPOINTS = {
   // Auth endpoints
@@ -7,12 +7,13 @@ export const API_ENDPOINTS = {
     GOOGLE_LOGIN: `${API_BASE_URL}/auth/google/login`,
     GOOGLE_CALLBACK: `${API_BASE_URL}/auth/google/callback`,
   },
-  // Chat endpoints
-  CHAT: {
-    SEND_MESSAGE: `${API_BASE_URL}/chat`,
-  },
-  // Health check
-  HEALTH: `${API_BASE_URL}/health`,
+};
+
+// Helper to get WebSocket URL for realtime endpoint
+export const getRealtimeWebSocketUrl = (token: string, timezone: string): string => {
+  const wsProtocol = API_BASE_URL.startsWith("https") ? "wss" : "ws";
+  const wsHost = API_BASE_URL.replace("http://", "").replace("https://", "");
+  return `${wsProtocol}://${wsHost}/realtime?token=${encodeURIComponent(token)}&timezone=${encodeURIComponent(timezone)}`;
 };
 
 export default API_ENDPOINTS;
